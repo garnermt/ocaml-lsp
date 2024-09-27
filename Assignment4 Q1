@@ -1,0 +1,36 @@
+#utop type 'a tree =                                                                                                                                                                                                                                            
+| Empty   
+| Node of 'a list * 'a tree list
+let tree = 
+Node (1, Node 2 (Empty, Empty), Node (3, Node 4( Empty, Empty), Empty))
+
+let rec height tree = function
+| Empty -> 0 
+| Node ( _, left, right)-> 
+1 + max (height left)(height right)
+
+let rec order f = function
+| Empty ->()
+| Node (keys, left, right) -> 
+ inorder left @ [value] @ inorder right @ [value] 
+
+let rec preorder tree = function 
+| Empty -> ()
+| Node (keys, left, right) -> 
+preorder left @ [value left] preorder right @ [value]
+
+let rec postorder tree = function
+| Empty ->()
+| Node (keys, left, right) ->
+postorder left @ [value] @ postorder right @ [value]
+
+let rec insert tree a = function
+| Empty -> Node (a, Empty, Empty)
+| Node (value, left, right) -> 
+if a < value then
+  Node (value, insert left a, right)
+ else
+   Node (value, left, insert right a)
+
+
+
